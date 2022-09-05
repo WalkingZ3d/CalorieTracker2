@@ -3,59 +3,90 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const mongoose = require('mongoose');
-const foodSchema = require('./Food');
+const { isEmail } = require('validator'); 
+const bcrypt = require('bcrypt');
+const daySchema = require('./Day');
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Document Schema for MongoDB
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const daySchema = new mongoose.Schema({
-    userId:{
+const userSchema = new mongoose.Schema({
+    email: {
         type: String,
+        required: [true, 'Email is required'],
         unique: true,
-        required: false
-    },
-    dayId: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    dayName: {
-        type: String,
-        required: true,
         lowercase: true,
-        maxlength: [50, 'Game title can only be up to 50 characters']
+        validate: [isEmail, 'Please enter a valid email']
     },
-    foods: {
-        type: [foodSchema.schema],
-        required: false,
-        default: []
-    }
-  });
+    username: {
+        type: String,
+        required: [true, 'Username is required'],
+        unique: true,
+        maxlength: [20, 'Username can only be up to 20 characters'],
+    },
+    password: {
+        type: String,
+        required: [true, 'password required'],
+        minlength: [5, 'Password must be at least 5 characters'],
+    },
+    days: {
+        type: [daySchema.schema],
+        default: [],
+        required: false
+  }
+});
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Static methods
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-daySchema.statics.findByUserId = async function(dayId) {
+userSchema.statics.login = async function(username, password) {
+    const user = await this.findOne({ username });
+    if(user){
+        const auth = await bcrypt.compare(password, user.password)
+        if (auth) {
+            return user;
+        }
+        throw Error('Incorrect password')
+    }
+    throw Error('Incorrect username')
+}
+
+userSchema.statics.findByUsername = async function(username) {
     return new Promise(async (resolve, reject) => {
         try {
-            const day = this.findOne({dayId})
-            resolve(day);
+            const user = Schema.User.findOne({ username: username });
+            resolve(user);
         } catch (err) {
-            console.log(err)
-            reject(`day with id: ${dayId} not found`);
+            reject(`User with username: ${username} not found`);
         }
     });
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Mongoose Hooks
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+userSchema.pre('save', async function (next) {    
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+    console.log('user about to be created & saved', this);  
+    next(); // go to next middleware in stack
+});
+
+userSchema.post('save', function (doc, next){
+    console.log('new user created and saved', doc);
+    next(); // go to next middleware in stack
+})
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Exports
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const Day = mongoose.model('day', daySchema);
+const User = mongoose.model('user', userSchema);
 
-module.exports = Day;
+module.exports = User;

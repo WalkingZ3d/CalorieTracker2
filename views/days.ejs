@@ -139,16 +139,15 @@
                     console.log('this one: ', data.errors)
                     dayError.textContent = data.errors.day;
                     form.reset()
-                } 
+                } else {
+                    window.location.reload(); 
+                }
                 
                 
             }
             catch (err){
                 console.error(err);
             } 
-            finally {
-                window.location.reload(); 
-            }
                   
         })
         

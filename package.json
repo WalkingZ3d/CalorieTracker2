@@ -1,24 +1,24 @@
 {
-  "name": "express-boiler-plate",
+  "name": "calorie-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon app.js",
     "test": "jest --silent --watchAll",
     "coverage": "jest --coverage --silent"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WalkingZ3d/express-boiler-plate.git"
+    "url": "git+https://github.com/WalkingZ3d/CalorieTracker2"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/WalkingZ3d/express-boiler-plate/issues"
+    "url": "https://github.com/WalkingZ3d/CalorieTracker2/issues"
   },
-  "homepage": "https://github.com/WalkingZ3d/express-boiler-plate#readme",
+  "homepage": "https://github.com/WalkingZ3d/CalorieTracker2#readme",
   "devDependencies": {
     "coverage": "^0.4.1",
     "jest": "^28.0.3",
@@ -26,9 +26,16 @@
     "supertest": "^6.2.3"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "ejs": "^3.1.7",
     "express": "^4.18.1",
-    "express-favicon": "^2.0.1"
+    "express-favicon": "^2.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.2",
+    "mongoose-unique-validator": "^3.1.0",
+    "validator": "^13.7.0"
   }
 }

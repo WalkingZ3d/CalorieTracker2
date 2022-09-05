@@ -13,7 +13,6 @@ const foodSchema = require('./Food');
 const daySchema = new mongoose.Schema({
     userId:{
         type: String,
-        unique: true,
         required: false
     },
     dayId: {

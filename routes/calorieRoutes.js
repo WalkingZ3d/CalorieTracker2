@@ -30,7 +30,7 @@ router.get('/food', calorieController.getFood);
 
 router.post('/calorie', calorieController.postCalorie);
 
-router.post('/calorie', calorieController.postF);
+router.post('/next', calorieController.postFoodId);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

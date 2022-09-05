@@ -1,0 +1,85 @@
+<%- include('partials/header') -%> 
+
+<div class="jumbotron text-center" id="title">
+    <h1 id="titleH1">Sign Up</h1>
+</div>
+<br>
+<div class="container" id="formDiv">
+    <div
+      class="row align-items-center"
+      style="min-height: 60vh">
+      <div class="col-md-12" id="formOutline">
+        <form>
+            <div class="form-outline mb-4 text-center text-white" >
+                <label for="email">Email</label><br>
+                <input type="text" name="email" required id="formInps">
+                <div class="email_error" id="errorDiv"></div>
+            </div>
+          
+            <div class="form-outline mb-4 text-center text-white">
+                <label for="username">Username</label><br>
+                <input type="text" name="username" required id="formInps">
+                <div class="username_error" id="errorDiv"></div>
+            </div>
+          
+            <div class="form-outline mb-4 text-center text-white">
+                <label for="password">Password</label><br>
+                <input type="password" name="password" required id="formInps">
+                <div class="password_error" id="errorDiv"></div>
+            </div>
+            <br>
+            <div class="form-outline mb-4 text-center">
+                <button type="submit" class="btn btn-primary mb-4" id="loginBtn">Sign Up</button>
+            </div>
+          
+            <div class="text-center text-white">
+              <p>Already a member? <a href="/login" id="signUpLink">Log In</a></p>
+              
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+  <br>
+
+<script>
+    const form = document.querySelector('form');
+    const emailError = document.querySelector('.email_error');
+    const usernameError = document.querySelector('.username_error');
+    const passwordError = document.querySelector('.password_error');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        emailError.textContent = '';
+        usernameError.textContent = '';
+        passwordError.textContent = '';
+
+        const email = form.email.value;
+        const username = form.username.value;
+        const password = form.password.value;
+
+        try {
+            const res = await fetch('/signup', {
+                method: 'POST',                
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({email, username, password})
+            });
+            const data = await res.json();
+            console.log(data);
+            if(data.errors){
+                console.log('thisone: ', data.errors)
+                emailError.textContent = data.errors.email;
+                usernameError.textContent = data.errors.username;
+                passwordError.textContent = data.errors.password;
+            }
+            if(data.user){
+                location.assign('/')
+            }
+        }
+        catch (err){
+            console.error(err);
+        }
+    })
+</script>
+<%- include('partials/footer') -%> 

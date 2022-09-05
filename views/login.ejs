@@ -1,0 +1,75 @@
+<%- include('partials/header') -%> 
+<div class="jumbotron text-center" id="title">
+    <h1 id="titleH1">Log In</h1>
+</div>
+<br>
+<div class="container" id="formDiv">
+    <div
+      class="row align-items-center"
+      style="min-height: 60vh">
+      <div class="col-md-12" id="formOutline">
+        <form>
+            <div class="form-outline mb-4 text-center text-white">
+                <label for="username">Username</label><br>
+                <input type="text" name="username" required id="formInps">
+                <div class="username_error" id="errorDiv"></div>
+            </div>
+          
+            <div class="form-outline mb-4 text-center text-white">
+                <label for="password">Password</label><br>
+                <input type="password" name="password" required id="formInps">
+                <div class="password_error" id="errorDiv"></div>
+            </div>
+            <br>
+            <div class="form-outline mb-4 text-center">
+                <button type="submit" class="btn btn-primary mb-4" id="loginBtn">Log in</button>
+            </div>
+          
+            <div class="text-center text-white">
+              <p>Not a member? <a href="/signup" id="signUpLink">Register</a></p>
+              
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+    const form = document.querySelector('form');
+    const usernameError = document.querySelector('.username_error');
+    const passwordError = document.querySelector('.password_error');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        usernameError.textContent = '';
+        passwordError.textContent = '';
+
+        const username = form.username.value;
+        const password = form.password.value;
+
+        try {
+            const res = await fetch('/login', {
+                method: 'POST',                
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({username, password})
+            });
+            const data = await res.json();
+            console.log(data);
+            if(data.errors){
+                console.log('this one: ', data.errors)
+                usernameError.textContent = data.errors.username;
+                passwordError.textContent = data.errors.password;
+            }
+            if(data.user){
+                location.assign('/')
+            }
+        }
+        catch (err){
+            console.error(err);
+        }
+    })
+</script>
+
+<%- include('partials/footer') -%> 

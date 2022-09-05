@@ -1,0 +1,493 @@
+:root {
+    --orange-color: #ff5900;
+    --header-color: #000;
+    --title-color: #21252b;
+    --body-color: #282c34;
+    --text-color: #abb2bf;
+}
+
+#top {
+    background-color: var(--header-color);
+    margin: 0;
+    text-align: right !important;
+    padding-right: 16;    
+}
+
+#navItem {
+    color: #fff !important;
+    font-size: 1.5em !important;
+    margin-left: 35px;
+    margin-right: 35px;
+    text-align: left;
+    margin-bottom: 0px;
+    padding-bottom: 0;
+}
+
+#navItem:hover {
+    color: var(--orange-color) !important;
+}
+
+#navItemHome {
+    color: #fff !important;
+    font-size: 1.5em !important;
+    margin-left: 35px;
+    margin-right: 35px;
+    text-align: left;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+#navItemHome:hover {
+    color: var(--orange-color) !important;
+}
+
+
+#hamburgerButton {
+    background-color: var(--orange-color) !important;
+    color: white !important;
+    z-index: 0;
+    margin-right: 10px
+}
+
+#containerNavId {
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    z-index: 100;
+}
+
+@media only screen and (min-width: 600px) {
+    #navItem {
+        padding-left: 0px;
+    }
+}
+
+#title {
+    padding-top: 2% !important;
+    padding-bottom: 2% !important;
+    background-color: var(--title-color) !important;
+    color: var(--orange-color) !important;
+    margin-bottom: 0;
+}
+
+#titleH1 {
+    margin: auto;
+    font-size: 3.5em;
+}
+
+#subtitleH4 {
+    font-size: 3.5em;
+}
+
+
+footer {
+    text-align: center !important;
+    font-size: 18px !important;
+    background-color: var(--header-color);
+}
+
+strong {
+    font-size: 28px;
+    color: var(--orange-color) !important;
+}
+
+#navLinks {
+    font-family: 'Roboto Mono', monospace !important;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
+
+body {
+    font-family: 'Roboto Mono', monospace !important;
+    background-color: var(--body-color) !important;
+    color: var(--text-color) !important;
+}
+
+#nameEnd {
+    color: var(--orange-color) !important;
+}
+
+#socialsHeader {
+    color: white !important;
+    font-size: 28px !important;
+}
+
+.flex {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+@media (max-width:991.98px) {
+    .padding {
+        padding: 1.5rem
+    }
+}
+
+@media (max-width:767.98px) {
+    .padding {
+        padding: 1rem
+    }
+}
+
+
+.btn.btn-social-icon {
+    width: 50px;
+    height: 50px;
+    padding: 0
+}
+
+.btn-outline-github {
+    border: 2px solid white;
+    color: white;
+    border-radius: 25px;
+}
+
+.btn-outline-github:hover {
+    background: #181c24;
+    color: #ffffff
+}
+
+.btn-outline-linkedin {
+    border: 2px solid white;
+    color: white;
+    border-radius: 25px;
+}
+
+.btn-outline-linkedin:hover {
+    background: #0a66c2;
+    color: #ffffff;
+    border-radius: 25px;
+}
+
+#socialButton {
+    margin-right: 10px;
+}
+
+#loremPara {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#x {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.section {
+    text-align:center;
+    font-size: 3em;
+}
+
+  #logoId {
+    width: 55px;
+    height: 50px;
+}
+
+.chat-window {
+    background-color: white;
+    height: 100%;
+    overflow: auto;
+    
+    border-radius: 10px;
+}
+
+#msgHolder {
+    min-height: 460px;
+    max-height: 400px;
+}
+
+
+#output p{
+    padding: 14px 0px;
+    margin: 0 20px;
+    border-bottom: 1px solid #504f4f;
+    color: #000;
+    max-width: 90%;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+#output span{
+    color: var(--orange-color);
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+#feedback span{
+    color: black;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+#feedback p{
+    color: var(--orange-color);
+    padding: 14px 0px;
+    margin: 0 20px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+#message {
+    width: 90%;
+    border-radius: 10px;
+    padding: 0.5em;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+#send {
+    width: 40%;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin-top: 5%;
+}
+
+@media only screen and (max-width: 575px) {
+    #send {
+        width: 20%;
+    }
+}
+
+
+#handle {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+#loginBtn {
+    background-color: var(--orange-color);
+    border: none;
+}
+
+#loginBtn:hover {
+    background-color: #fff;
+    color: var(--orange-color);
+}
+
+#formOutline {
+    background-color: black;
+    padding: 50px;
+    border-radius: 25px;
+}
+
+#formDiv {
+    margin-left: auto;
+    max-width: 75%;
+}
+
+#errorDiv {
+    color: #f00;
+    margin-bottom: 3%;
+}
+
+#signUpLink {
+    color: var(--orange-color);
+    text-decoration: none;
+}
+
+#formInps { 
+    max-width: 90%;
+    padding-top: 3px;
+    padding-bottom: 3px;	
+    border-radius: 5px;
+}
+
+#dayLabel {
+    padding-top: 6px;
+    text-align: center;
+    color: #fff;
+}
+
+#dayLabelCol {
+    text-align: right;
+}
+#dayNumCol {
+    text-align: center;
+}
+#dayAddCol {
+    text-align: left;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #formDiv {
+        width: 90%;
+    }
+    #dayLabelCol {
+        text-align: center;
+        margin-bottom: 3%
+    }
+    #dayAddCol {
+        text-align: center;
+        margin-top: 6%;
+    }
+}
+  
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #formDiv {
+        width:60%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    #formDiv {
+        width: 55%;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #formDiv {
+        width: 45%;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #formDiv {
+        width: 30%;
+    }
+}
+
+#clickHere {
+    font-size: 25px;
+    text-decoration: none;
+    color: #fff;
+}
+
+#clickHere:hover {
+    text-decoration: none;
+    color: var(--orange-color);
+}
+
+#tableRow{
+    color: #fff;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+.tdDelete {
+   width: 50%;
+}
+
+.tdDeleteFood {
+    width: 5%;
+ }
+
+#addBtn {
+    background-color: var(--orange-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#addBtn:hover {
+    background-color:#fff;
+    color: var(--orange-color);
+}
+
+#backBtn {
+    margin-top: 20px;
+    background-color: #000;
+    color: var(--orange-color);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 2%;
+}
+
+#backBtn:hover {
+    background-color: var(--orange-color);
+    color: #000;
+}
+
+.daysListLinks {
+    color: var(--orange-color);
+    font-size: 22px;
+    
+}
+
+.daysListLinks:hover {
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+.material-symbols-outlined.red600 {
+    color: #f00;
+    background-color: var(--body-color);
+    border: none;
+    padding-top: 0px;
+    position: relative;
+    bottom: 0;
+    min-height: 33px !important;
+    margin-top: 1px !important;    
+}
+
+.material-symbols-outlined.red601 {
+    color: #f00;
+    background-color: var(--body-color);
+    border: none;
+    padding-top: 10px;
+    position: relative;
+    bottom: 0;
+    min-height: 33px !important;
+    margin-top: 1px !important;   
+}
+
+.material-symbols-outlined.nav {
+    font-size: 36px;  
+}
+
+tr:last-child > td {
+    border-bottom: 1px solid var(--body-color);
+}
+
+#dayTableContainer {
+    margin-bottom: 1%;
+}
+
+#paginationContainer {
+    margin-bottom: 3%;
+}
+
+#prevBtn, #nextBtn {
+    background-color: var(--orange-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#prevBtn:hover, #nextBtn:hover {
+    border: none;    
+    background-color:#fff;
+    color: var(--orange-color);
+}
+
+.foodTableName {
+    padding-top: 10px;
+}
+
+#addFood {
+    background-color: var(--orange-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 1%;
+    text-decoration: none;
+}
+
+#addFood:hover {
+    background-color:#fff;
+    color: var(--orange-color);
+}
+
+#calorieTotal {
+    color: var(--orange-color);
+    font-weight: bold;
+}
+
+.foodTh {
+    color: #000 !important
+}
