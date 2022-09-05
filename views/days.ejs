@@ -1,0 +1,164 @@
+<%- include('partials/header') -%>    
+
+    <div class="jumbotron text-center" id="title">
+        <h1 id="titleH1">Days</h1>
+    </div>
+
+    <div class="form-outline mb-4 text-center text-white">
+        <button onclick=goBack() id="backBtn">Back</button>
+    </div>
+    
+    <div class="container">   
+        <form>
+            <div class="row">
+                <div class="col-sm-4" id="dayLabelCol"><label for="dayNum" id="dayLabel">Day Number:</label></div>
+                <div class="col-sm-4" id="dayNumCol"><input type="number" class='dayNum' name="dayNum" required id="formInps" min="1"></div>
+                <div class="col-sm-4" id="dayAddCol"><button type="submit" class="btn btn-primary mb-4" id="addBtn">Add</button></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center"><div class="day_error" id="errorDiv"></div></div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="dayTableContainer">
+        <div class="row align-items-center text-white">
+          <div class="col-md-12" >
+            <table class="table table-borderless" id="dayTable">
+                <tbody id="output">
+                </tbody>
+              </table>
+          </div>
+        </div>
+    </div>
+
+    <div class="container" id="paginationContainer">   
+        <form>
+            <div class="row">
+                <div class="col-sm-6 text-right"><button id="prevBtn">Previous</button> </div>
+                <div class="col-sm-6 text-left"><button id="nextBtn">Next</button></div>
+            </div>
+        </form>
+        <br><br>
+    </div>
+
+    
+ 
+      
+    <script>
+        const pageSize = 7;
+        let curPage = 1;   
+        let data; 
+        let table = document.querySelector('#dayTable');
+
+        document.querySelector('#nextBtn').addEventListener('click', nextPage, false);
+        document.querySelector('#prevBtn').addEventListener('click', previousPage, false);
+
+        function previousPage(e) {
+            e.preventDefault();
+            if(curPage > 1) curPage--;
+            populate()
+        }
+          
+        function nextPage(e) {
+            e.preventDefault();
+            if((curPage * pageSize) < data.days.length) curPage++;
+            populate();
+        }
+
+        function sortTable() {
+            let rows, switching, i, x, y, shouldSwitch;
+            switching = true;
+            while (switching) {
+              switching = false;
+              rows = table.rows;
+              for (i = 0; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[0].firstChild.nextSibling.id;
+                y = rows[i + 1].getElementsByTagName("TD")[0].firstChild.nextSibling.id;
+                if (Number(x) > Number(y)) {
+                  shouldSwitch = true;
+                  break;
+                }
+              }
+              if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+              }
+            }
+        }
+
+        const populate = async () => {
+            try {
+                const res = await fetch('/daysList', {
+                    method: 'GET',                
+                    headers: { 'Content-Type': 'application/json'}
+                });
+                data = await res.json();
+                console.log('The data is as follows good sir: ', data.days);
+                let result = '';
+                data.days.filter((row, index) => {
+                      let start = (curPage-1)*pageSize;
+                      let end =curPage*pageSize;
+                      if(index >= start && index < end) return true;
+                }).forEach(function (value, i) {
+                    result += `<tr id="tableRow">
+                    <td class="tdDelete"> <a id=${value.dayName.split(' ')[1]} class="daysListLinks" href="/entry/${value.dayId}">Day ${value.dayName.split(' ')[1]}</a></td>
+                    <td class="tdDelete"> <button class="material-symbols-outlined red600" onclick="deleteDay()">delete</button> </td>
+                    </tr>`;
+                });
+                table.innerHTML = result;                
+            }
+            catch (err){
+                console.error(err);
+            }
+            sortTable();
+        }
+
+        document.onload = populate();
+
+        const form = document.querySelector('form');
+        const dayNum = document.querySelector('.dayNum');
+        const dayError = document.querySelector('.day_error');
+
+        form.addEventListener('submit', async (e) => {
+            
+            e.preventDefault();
+    
+            let dayName = 'Day ' + dayNum.value
+            try {
+                const res = await fetch('/days', {
+                    method: 'POST',                
+                    headers: { 'Content-Type': 'application/json'},
+                    body: JSON.stringify({dayName: dayName})
+                });
+                const data = await res.json();
+                console.log('data after post: ', data);
+                
+                if(data.errors){
+                    console.log('this one: ', data.errors)
+                    dayError.textContent = data.errors.day;
+                    form.reset()
+                } 
+                
+                
+            }
+            catch (err){
+                console.error(err);
+            } 
+            finally {
+                window.location.reload(); 
+            }
+                  
+        })
+        
+        const goBack = () => {
+            window.location.assign('/');
+        }        
+
+        const deleteDay = () => {
+            console.log('you wanna delete huh?')
+        }
+    </script>
+
+<%- include('partials/footer') -%> 

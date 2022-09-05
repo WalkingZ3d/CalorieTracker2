@@ -1,0 +1,70 @@
+<%- include('partials/header') -%>    
+
+    <div class="jumbotron text-center" id="title">
+        <h1 id="titleH1"><%= dayNum%> Entry</h1>
+    </div>
+    <div class="form-outline mb-4 text-center text-white">
+        <button onclick=goBack() id="backBtn">Back</button>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12" >
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="text-center foodTh">Food</th>
+                    <th scope="col" class="text-center foodTh">Calories</th>
+                    <th scope="col" class="text-center"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% let total = 0; %> 
+                    <% for(let i = 0; i < foodList.length; i++) { %>    
+                        <% total += foodList[i].calorieAmount %> 
+                        <tr>
+                            <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].foodName %></p></td>
+                            <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].calorieAmount %></p></td>
+                            <td class="tdDeleteFood"> <button class="material-symbols-outlined red601" onclick="deleteDay()">delete</button> </td>
+                        </tr>            
+                    <% } %>
+                    <div class="container">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <a href="/food" id="addFood">Add A Food!</a>
+                                </div>
+                                <div class="col-sm-6 text-white text-center">
+                                     Total Calories for <%= dayNum%>: <span id="calorieTotal"><%= Math.round(total, 2) %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+      <script>
+        const populate = () => {
+              console.log(window.location.href.split('/')[4])
+              sessionStorage.setItem('id', window.location.href.split('/')[4])
+        }
+
+        document.onload = populate();
+
+        const goBack = () => {
+            window.location.assign('/days')
+        }
+        
+        const deleteDay = () => {
+            console.log('you wanna delete huh?')
+        }
+      </script>
+
+<%- include('partials/footer') -%> 
