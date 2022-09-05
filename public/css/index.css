@@ -23,6 +23,20 @@
     padding-bottom: 0;
 }
 
+#navItemName {
+    color: #fff !important;
+    font-size: 1.5em !important;
+    margin-left: 35px;
+    margin-right: 35px;
+    text-align: left;
+    margin-bottom: 0px;
+    padding-bottom: 0;
+}
+
+#displayedName {
+    color: var(--orange-color);
+}
+
 #navItem:hover {
     color: var(--orange-color) !important;
 }

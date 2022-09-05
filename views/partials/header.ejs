@@ -31,7 +31,7 @@
             <ul class="navbar-nav ml-auto">
                 <% if(user) { %>
                     <li class="nav-item">
-                        <p class="nav-link active" id="navItem">Welcome <%= user.username %></p>
+                        <p class="nav-link active" id="navItemName">Welcome <span id="displayedName"><%= user.username %></span></p>
                     </li>  
                     <li class="nav-item">
                         <a class="nav-link active" href="/logout" id="navItem"><span class="material-symbols-outlined nav">logout</span></a>
