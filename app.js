@@ -48,7 +48,7 @@ app.set('view engine', 'ejs');
 
 const dbURI = `mongodb+srv://dan:${process.env.DATABASE_PASSWORD}@cluster0.e3gubow.mongodb.net/node-auth`;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
-  .then((result) => app.listen(3001))
+  .then((result) => app.listen(3002))
   .catch((err) => console.log(err));
 
 

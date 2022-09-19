@@ -34,7 +34,7 @@
 }
 
 #displayedName {
-    color: var(--orange-color);
+    color: var(--orange-color) !important;
 }
 
 #navItem:hover {
