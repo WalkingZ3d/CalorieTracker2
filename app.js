@@ -46,8 +46,8 @@ app.set('view engine', 'ejs');
 // Database connection
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const dbURI = `mongodb+srv://dan:${process.env.DATABASE_PASSWORD}@cluster0.e3gubow.mongodb.net/node-auth`;
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
+const mongodbURI = `mongodb+srv://dan:${process.env.DATABASE_PASSWORD}@cluster0.e3gubow.mongodb.net/node-auth?retryWrites=true&w=majority`;
+mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true})
   .then((result) => app.listen(3002))
   .catch((err) => console.log(err));
 
