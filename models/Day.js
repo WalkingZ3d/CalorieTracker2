@@ -38,7 +38,7 @@ const daySchema = new mongoose.Schema({
 // Static methods
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-daySchema.statics.findByUserId = async function(dayId) {
+daySchema.statics.findByDayId = async function(dayId) {
     return new Promise(async (resolve, reject) => {
         try {
             const day = this.findOne({dayId})

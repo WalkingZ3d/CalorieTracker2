@@ -25,7 +25,7 @@
                         <tr>
                             <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].foodName %></p></td>
                             <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].calorieAmount %></p></td>
-                            <td class="tdDeleteFood"> <button class="material-symbols-outlined red601" onclick="deleteDay()">delete</button> </td>
+                            <td class="tdDeleteFood"> <button id="<%= foodList[i]._id %> " class="material-symbols-outlined red601" onclick="deleteDay(this.id)">delete</button> </td>
                         </tr>            
                     <% } %>
                     <div class="container">
@@ -62,8 +62,21 @@
             window.location.assign('/days')
         }
         
-        const deleteDay = () => {
-            console.log('you wanna delete huh?')
+        const deleteDay = async (id) => {
+            console.log(id)
+            console.log(window.location.href.split('/')[4])
+            try {
+                const res = await fetch('/food', {
+                    method: 'DELETE',                
+                    headers: { 'Content-Type': 'application/json'},
+                    body: JSON.stringify({userDayId: id.trim(), dayId: window.location.href.split('/')[4]})
+                });
+                const data = await res.json();
+                console.log('data after delete: ', data);               
+            }
+            catch (err){
+                console.error(err);
+            } 
         }
       </script>
 

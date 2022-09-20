@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/Users')
 const Food = require('../models/Food');
 const fetch = require('node-fetch');
+const mongoose = require('mongoose');
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,12 +100,12 @@ const getDaysList = (req, res) => {
 const getEntryList = (req, res) => {
     const entryId = req.params.id;
     console.log('entryId = user _id for this array of days ', entryId)
-    Day.findByUserId(entryId)
+    Day.findByDayId(entryId)
         .then((result) => {
             let title = result.dayName.charAt(0).toUpperCase() + result.dayName.slice(1);
             console.log('result after finding day for entry/:id: ', result)
             res.render('entry', {pageTitle: `Day ${result.dayName.split(' ')[1]} Entry`, dayNum: title, foodList: result.foods});
-            // res.json({results: result})
+            console.log("just the foods array: ", result.foods)
         })
         .catch((err) => {
             console.log(err)
@@ -144,7 +145,7 @@ const postCalorie =  async (req, res) => {
         calories = data.items[0].calories;
         let obj;
         let newId = 1;
-        Day.findByUserId(entryId)
+        Day.findByDayId(entryId)
         .then((result) => {
             obj = result._id.toString()
             let arr = [];
@@ -189,11 +190,12 @@ const postCalorie =  async (req, res) => {
 }
   
 
+// /next POST
 const postFoodId = (req, res) => {
-    const entryId = req.body.id;
-    console.log('the entryid for food added: ', entryId)
+    const dayId = req.body.id;
+    console.log('the dayId for food added: ', dayId)
     let newId = 0;
-    Day.findByUserId(entryId)
+    Day.findByDayId(dayId)
     .then((result) => {
         obj = result._id.toString()
         let arr = [];
@@ -216,8 +218,64 @@ const postFoodId = (req, res) => {
     })
 }
 
+
+// /food DELETE
+const deleteFood = async (req, res) => {
+    const userDayId = req.body.userDayId
+    console.log('_id of food deleted: ', userDayId);
+    const dayId = req.body.dayId
+    console.log('dayId of day deleted from: ', dayId)
+    let obj;
+
+    // deleting food object from database
+    try {
+        Food.findByIdAndDelete(userDayId)
+        .then((result) => {
+            console.log('result of deletion: ', result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+    
+    // deleting food from array of that day
+    try {        
+        Day.findByDayId(dayId)
+        .then((result) => {
+            obj = result._id.toString()
+            console.log('_id of day deleting from: ', obj)
+            console.log('is valid _id check: ', mongoose.Types.ObjectId.isValid(obj));            
+            try{                
+                return new Promise(async (resolve, reject) => {
+                    try {
+                        await Day.findByIdAndUpdate(
+                            { _id: obj }, 
+                            { $pull: { foods: {_id: userDayId} } })
+                        resolve(`Food with id ${userDayId} was deleted`)
+                    } catch (error) {
+                        console.log(error);
+                        reject('Food could not be added');
+                    }
+                })
+            } catch (error){
+                console.log(error)
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+    catch (err){
+        console.error(err);
+    }
+    res.send({message: 'done'})
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Exports
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-module.exports = { getDays, postDays, getDaysList, getFood, postCalorie, getEntryList, postFoodId };
+module.exports = { getDays, postDays, getDaysList, getFood, postCalorie, getEntryList, postFoodId, deleteFood };
