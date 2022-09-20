@@ -31,7 +31,7 @@ app.use(cors("*"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'));
-app.use(favicon(__dirname + '/public/images/favicon.png'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(cookieParser());
 
 
