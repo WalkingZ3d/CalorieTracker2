@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,12 +46,17 @@
                 <% } %>      
             </ul>
         </div>
-    </nav>
+    </nav> -->
 
-    <div class="content">
-        404: Page Not Found!
-        <br><br>
-        <a href="/" id="backHome">Back To Home</a>
+   <%- include('partials/header') %> 
+
+    <div class="container">   
+        <div class="row">
+            <div class="col-sm-12 text-center" id="div404">404: Page Not Found!</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center"><a href="/" id="backHome">Back To Home</a></div>
+        </div>
     </div>
 
 <%- include('partials/footer') -%> 

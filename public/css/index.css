@@ -1,13 +1,13 @@
 :root {
-    --orange-color: #ff5900;
+    --orange-color: #f78e1f;
     --header-color: #000;
-    --title-color: #21252b;
-    --body-color: #282c34;
-    --text-color: #abb2bf;
+    --title-color: #e7e4e4;
+    --body-color: #fff;
+    --text-color: #000;
 }
 
 #top {
-    background-color: var(--header-color);
+    background-color: #f78e1f;
     margin: 0;
     text-align: right !important;
     padding-right: 16;    
@@ -18,7 +18,7 @@
     font-size: 1.5em !important;
     margin-left: 35px;
     margin-right: 35px;
-    text-align: left;
+    text-align: right;
     margin-bottom: 0px;
     padding-bottom: 0;
 }
@@ -28,7 +28,7 @@
     font-size: 1.5em !important;
     margin-left: 35px;
     margin-right: 35px;
-    text-align: left;
+    text-align: right;
     margin-bottom: 0px;
     padding-bottom: 0;
 }
@@ -38,7 +38,7 @@
 }
 
 #navItem:hover {
-    color: var(--orange-color) !important;
+    color: #000 !important;
 }
 
 #navItemHome {
@@ -52,7 +52,7 @@
 }
 
 #navItemHome:hover {
-    color: var(--orange-color) !important;
+    color: #000 !important;
 }
 
 
@@ -60,7 +60,8 @@
     background-color: var(--orange-color) !important;
     color: white !important;
     z-index: 0;
-    margin-right: 10px
+    margin-right: 10px;
+    background-color: #fff !important;
 }
 
 #containerNavId {
@@ -94,6 +95,9 @@
     font-size: 3.5em;
 }
 
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(247, 142, 31, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 
 footer {
     text-align: center !important;
@@ -127,6 +131,11 @@ body {
 #socialsHeader {
     color: white !important;
     font-size: 28px !important;
+}
+
+#socialsDiv {
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .flex {
@@ -178,7 +187,8 @@ body {
 }
 
 #socialButton {
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    margin-top: 10px;
 }
 
 #loremPara {
@@ -285,6 +295,24 @@ body {
 #formDiv {
     margin-left: auto;
     max-width: 75%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.clickHereDiv {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.cardDiv {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+.hr-light{
+    background-color: var(--orange-color);
+    font-weight: bold;
 }
 
 #errorDiv {
@@ -367,12 +395,24 @@ body {
 #clickHere {
     font-size: 25px;
     text-decoration: none;
-    color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    padding: 7px;
+    background-color: var(--title-color);
+}
+
+#faq {
+    font-size: 25px;
+    text-decoration: none;
+    color: var(--orange-color);
+    font-weight: bold;
 }
 
 #clickHere:hover {
     text-decoration: none;
-    color: var(--orange-color);
+    background-color: var(--orange-color);
+    color: #fff;
 }
 
 #tableRow{
@@ -412,8 +452,7 @@ body {
 }
 
 #backBtn:hover {
-    background-color: var(--orange-color);
-    color: #000;
+    color: #fff;
 }
 
 .daysListLinks {
@@ -503,5 +542,20 @@ tr:last-child > td {
 }
 
 .foodTh {
-    color: #000 !important
+    color: #000 !important;
+}
+
+#div404 {
+    margin-bottom: 5%;
+    color: #000;
+    margin-top: 5%
+}
+
+#backHome {
+    color: #000;
+    text-decoration: none;
+}
+
+#backHome:hover {
+    color: var(--orange-color);
 }

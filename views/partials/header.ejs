@@ -23,12 +23,13 @@
 
     <nav class="navbar sticky-top navbar-expand-md navbar-dark" id="top">
         <a class="nav-link active" href="/" id="navItemHome"><span class="material-symbols-outlined nav">home</span></a>
-        <button class="navbar-toggler ml-auto justify-content-left" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="hamburgerButton">
+        <button class="navbar-toggler ml-auto custom-toggler justify-content-left" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="hamburgerButton">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
           
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto justify-content-right">
                 <% if(user) { %>
                     <li class="nav-item">
                         <p class="nav-link active" id="navItemName">Welcome <span id="displayedName"><%= user.username %></span></p>

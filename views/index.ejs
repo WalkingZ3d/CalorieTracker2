@@ -3,21 +3,64 @@
     <div class="jumbotron text-center" id="title">
         <h1 id="titleH1">Calorie Tracker</h1>
     </div>
-    <br>  
-        
     
     <div class="container text-center">
-        
-            <div class="row ">
-              <div class="col-sm-12 text-center">
-                <a href="/days" id="clickHere">Click Here to Start Tracking!</a>
-              </div>
-            </div>
-          
+      <div class="row clickHereDiv">
+        <div class="col-sm-12 text-center">
+          <p><a href="/days" id="clickHere">Click Here to Start Tracking!</a></p>
+        </div>
+      </div>    
     </div>
 
-    <br><br>
+    <div class="container">
+      <div class="row ">
+        <div class="col-sm-12 text-center">
+          <p id="faq">F.A.Q.</p>
+        </div>
+      </div>    
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col mb-6 cardDiv">
+          <div class="card h-100">
+            <div class="card-body elegant-color white-text rounded-bottom">
+              <h4 class="card-title">How many calories do I need?</h4>
+              <hr class="hr-light">
+              <p class="card-text white-text mb-4">Adult Males need to eat around 2500 calories per day, Women need around 2000.</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="col mb-6 cardDiv">
+          <div class="card h-100">
+            <div class="card-body elegant-color white-text rounded-bottom">
+              <h4 class="card-title">What kind of foods should I eat?</h4>
+              <hr class="hr-light">
+              <p class="card-text white-text mb-4">This depends on your body and goals, but to lose weight aim for fruit, veg and pick low fat & sugar options!.</p>
+            </div>
+          </div>    
+        </div>
+
+        <div class="col mb-6 cardDiv">
+          <div class="card h-100">
+            <div class="card-body elegant-color white-text rounded-bottom">
+              <h4 class="card-title">Can I also track my exercise on this app?</h4>
+              <hr class="hr-light">
+              <p class="card-text white-text mb-4">That content is in development and will be added shortly!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-6 cardDiv">
+          <div class="card h-100">
+            <div class="card-body elegant-color white-text rounded-bottom">
+              <h4 class="card-title">What is the purpose of this app?</h4>
+              <hr class="hr-light">
+              <p class="card-text white-text mb-4">By tracking how many calories you are eating, you are more likely to only eat as much as is necessary.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- 
     <div class="container">
     <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -47,7 +90,7 @@
         </a>
       
       </div>
-    </div>
+    </div> -->
       <br><br>
     
 <%- include('partials/footer') -%> 
