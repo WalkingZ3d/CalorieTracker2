@@ -86,7 +86,8 @@ const postDays = async (req, res) => {
 const getDaysList = (req, res) => {
     const token = req.headers.cookie.split('=')[1];
     const decodedToken = jwt.decode(token);
-    User.findById({_id: decodedToken.id})
+    console.log('user id for days list get: ', decodedToken.id)
+    User.findById({_id: decodedToken.id})   
         .then((result) => {
             res.json({days: result.days})
         })

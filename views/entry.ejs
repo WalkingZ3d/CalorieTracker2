@@ -3,7 +3,7 @@
     <div class="jumbotron text-center" id="title">
         <h1 id="titleH1"><%= dayNum%> Entry</h1>
     </div>
-    <div class="form-outline mb-4 text-center text-white">
+    <div class="form-outline mb-4 text-center">
         <button onclick=goBack() id="backBtn">Back</button>
     </div>
 
@@ -11,11 +11,11 @@
         <div class="row align-items-center">
           <div class="col-md-12" >
             <table class="table">
-                <thead class="thead-dark">
+                <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="text-center foodTh">Food</th>
-                    <th scope="col" class="text-center foodTh">Calories</th>
-                    <th scope="col" class="text-center"></th>
+                    <th scope="col" class="text-center foodTh" id="thead">Food</th>
+                    <th scope="col" class="text-center foodTh" id="thead">Calories</th>
+                    <th scope="col" class="text-center" id="thead"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -23,8 +23,8 @@
                     <% for(let i = 0; i < foodList.length; i++) { %>    
                         <% total += foodList[i].calorieAmount %> 
                         <tr>
-                            <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].foodName %></p></td>
-                            <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].calorieAmount %></p></td>
+                            <td class="text-center"><p class="foodTableName"><%= foodList[i].foodName %></p></td>
+                            <td class="text-center"><p class="foodTableName"><%= foodList[i].calorieAmount %></p></td>
                             <td class="tdDeleteFood"> <button id="<%= foodList[i]._id %> " class="material-symbols-outlined red601" onclick="deleteFood(this.id)">delete</button> </td>
                         </tr>            
                     <% } %>
@@ -34,7 +34,7 @@
                                 <div class="col-sm-6 text-center">
                                     <a href="/food" id="addFood">Add A Food!</a>
                                 </div>
-                                <div class="col-sm-6 text-white text-center">
+                                <div class="col-sm-6 text-center">
                                      Total Calories for <%= dayNum%>: <span id="calorieTotal"><%= Math.round(total, 2) %></span>
                                 </div>
                             </div>

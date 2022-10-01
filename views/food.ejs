@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>    
 
     <div class="jumbotron text-center" id="title">
-        <h1 id="titleH1">Food</h1>
+        <h1 id="titleH1">Add A Food To Day <span id="dayNumOutput"></span></h1>
     </div>
     
     <!-- <div class="container"id="formDiv">
@@ -62,6 +62,8 @@
           </div>
         </div>
       </div>
+
+
       <script>
         const form = document.querySelector('form');
         const getCaloriesBtn = document.getElementById('calorieBtn');
@@ -79,49 +81,45 @@
           let newIdSent = 0;
 
           try {
-            console.log('hello')
             const res = await fetch('/next', {
               method: 'POST',                
               headers: { 'Content-Type': 'application/json'},
               body: JSON.stringify({id: id})
             });
             const data = await res.json();
-            console.log(data.newId)
+            console.log('new -id to be added:' , data.newId)
             newIdSent = data.newId;
           }
           catch (err){
             console.error(err);
           }
           try {
-            console.log('here: ', newIdSent)
+            window.location.assign(`/entry/${dayPageId}`)
             const res = await fetch('/calorie', {
                 method: 'POST',                
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({query: query, id: id, userDayNewId: newIdSent})
             });
             const data = await res.json();
-            console.log(data)
+            console.log('data returned from post to /calorie: ', data)
             const calories = data.calories;
             form.reset();
             console.log(calories)
-
-            
           }
           catch (err){
             console.error(err);
           }
-          window.location.assign(`/entry/${dayPageId}`)
-
         })
 
         const goBack = () => {
           window.location.assign(`/entry/${dayPageId}`)
         }
 
-        const lol = () => {
-          console.log('lol: ', dayPageId)
+        const getDayNum = () => {
+          console.log('dayId adding to: ', dayPageId);
+          document.getElementById('dayNumOutput').textContent = dayPageId[0];
         }
-        document.onload = lol()
+        document.onload = getDayNum()
       </script>
 
 <%- include('partials/footer') -%> 

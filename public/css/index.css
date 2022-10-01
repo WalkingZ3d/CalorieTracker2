@@ -34,7 +34,7 @@
 }
 
 #displayedName {
-    color: var(--orange-color) !important;
+    color: #000 !important;
 }
 
 #navItem:hover {
@@ -325,6 +325,11 @@ body {
     text-decoration: none;
 }
 
+#signUpLink:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
 #formInps { 
     max-width: 90%;
     padding-top: 3px;
@@ -437,7 +442,7 @@ body {
 }
 
 #addBtn:hover {
-    background-color:#fff;
+    background-color:#000;
     color: var(--orange-color);
 }
 
@@ -456,15 +461,13 @@ body {
 }
 
 .daysListLinks {
-    color: var(--orange-color);
-    font-size: 22px;
-    
+    color: #000;
+    font-size: 22px;    
 }
 
 .daysListLinks:hover {
     text-decoration: none;
-    color: #fff;
-    
+    color: var(--orange-color);    
 }
 
 .material-symbols-outlined.red600 {
@@ -514,7 +517,7 @@ tr:last-child > td {
 
 #prevBtn:hover, #nextBtn:hover {
     border: none;    
-    background-color:#fff;
+    background-color:#000;
     color: var(--orange-color);
 }
 
@@ -532,8 +535,12 @@ tr:last-child > td {
 }
 
 #addFood:hover {
-    background-color:#fff;
+    background-color:#000;
     color: var(--orange-color);
+}
+
+#thead {
+    background-color: var(--title-color) !important;
 }
 
 #calorieTotal {

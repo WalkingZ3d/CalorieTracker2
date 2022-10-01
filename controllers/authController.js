@@ -32,7 +32,7 @@ const handleErrors = (err) => {
         errors.username = 'That username is already in use'
         return errors;
     } else if (err.code === 11000 && err.message.includes('email')) {
-        errors.username = 'That email is already in use'
+        errors.email = 'That email is already in use'
         return errors;
     }
 
