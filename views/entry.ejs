@@ -25,7 +25,7 @@
                         <tr>
                             <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].foodName %></p></td>
                             <td class="text-white text-center"><p class="foodTableName"><%= foodList[i].calorieAmount %></p></td>
-                            <td class="tdDeleteFood"> <button id="<%= foodList[i]._id %> " class="material-symbols-outlined red601" onclick="deleteDay(this.id)">delete</button> </td>
+                            <td class="tdDeleteFood"> <button id="<%= foodList[i]._id %> " class="material-symbols-outlined red601" onclick="deleteFood(this.id)">delete</button> </td>
                         </tr>            
                     <% } %>
                     <div class="container">
@@ -62,7 +62,7 @@
             window.location.assign('/days')
         }
         
-        const deleteDay = async (id) => {
+        const deleteFood = async (id) => {
             console.log(id)
             console.log(window.location.href.split('/')[4])
             try {

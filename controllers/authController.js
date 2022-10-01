@@ -12,15 +12,19 @@ require('dotenv').config() // to use env file to hide secret
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const handleErrors = (err) => {
-    console.log(err.message, err.code);
+    console.log('in the error handler message:', err.message, ' + error code: ', err.code);
     let errors = { username: '', password: '', email: '' };
 
     if (err.message === 'Incorrect email') {
         errors.email = 'That email is not registered'
     }
 
-    if (err.message === 'Invalid password') {
-        errors.email = 'That password is incorrect'
+    if (err.message === 'Incorrect password') {
+        errors.password = 'That password is incorrect'
+    }
+
+    if (err.message === 'Incorrect username') {
+        errors.username = 'That username is not registered'
     }
 
     //duplicate error codename

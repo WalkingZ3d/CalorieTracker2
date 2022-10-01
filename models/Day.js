@@ -18,7 +18,8 @@ const daySchema = new mongoose.Schema({
     dayId: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        sparse: true
     },
     dayName: {
         type: String,

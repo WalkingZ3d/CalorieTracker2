@@ -98,9 +98,9 @@ const getDaysList = (req, res) => {
 
 // /entry/:id GET
 const getEntryList = (req, res) => {
-    const entryId = req.params.id;
-    console.log('entryId = user _id for this array of days ', entryId)
-    Day.findByDayId(entryId)
+    const dayId = req.params.id;
+    console.log('dayId from URL params: ', dayId)
+    Day.findByDayId(dayId)
         .then((result) => {
             let title = result.dayName.charAt(0).toUpperCase() + result.dayName.slice(1);
             console.log('result after finding day for entry/:id: ', result)
@@ -155,7 +155,7 @@ const postCalorie =  async (req, res) => {
             console.log(err)
         })
         try{
-            const food = await Food.create({userDayId: entryId +'-' + userDayNewId, foodName: data.items[0].name, calorieAmount: data.items[0].calories }); //CHANGE BACK!!!!!!
+            const food = await Food.create({userDayId: entryId +'-' + userDayNewId, foodName: data.items[0].name, calorieAmount: data.items[0].calories });
             food.save()
             .then((result) => {
                 console.log('food result: ', result);
@@ -171,15 +171,11 @@ const postCalorie =  async (req, res) => {
                         { $push: { foods: food } })
                     resolve(food); 
                 } catch (error) {
-                    // const errors = handleErrors(error);
-                    // res.status(422).json({ errors });
                     console.log(error);
                     reject('Food could not be added');
                 }
             })
         } catch (error){
-            // const errors = handleErrors(error);
-            // res.status(422).json({ errors });
             console.log(error)
         }
     }
