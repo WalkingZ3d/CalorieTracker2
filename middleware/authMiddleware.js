@@ -20,7 +20,7 @@ const requireAuth = (req, res, next) => {
             console.log(err.message);
             res.redirect('login');
         } else {
-          console.log('toekn of user in require auth: ', decodedToken);
+          console.log('token of user in require auth: ', decodedToken);
           next();
         }
       })

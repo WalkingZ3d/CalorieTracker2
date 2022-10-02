@@ -126,6 +126,7 @@
             e.preventDefault();
     
             let dayName = 'Day ' + dayNum.value
+            window.location.reload()
             try {
                 const res = await fetch('/days', {
                     method: 'POST',                

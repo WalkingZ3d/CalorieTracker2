@@ -24,7 +24,7 @@ router.post('/days', calorieController.postDays);
 
 router.get('/daysList', calorieController.getDaysList);
 
-//router.get('/entry/:id', requireAuth, calorieController.getEntryList);
+// router.get('/entry/:id', requireAuth, calorieController.getEntryList);
 
 router.get('/entry/:id', calorieController.getEntryList);
 

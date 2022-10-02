@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>    
 
     <div class="jumbotron text-center" id="title">
-        <h1 id="titleH1">Add A Food To Day <span id="dayNumOutput"></span></h1>
+        <h1 id="titleH1">Add a Food to Day <span id="dayNumOutput"></span></h1>
     </div>
     
     <!-- <div class="container"id="formDiv">
@@ -116,8 +116,15 @@
         }
 
         const getDayNum = () => {
-          console.log('dayId adding to: ', dayPageId);
-          document.getElementById('dayNumOutput').textContent = dayPageId[0];
+          console.log('dayId adding to: ', dayPageId.length);
+          if(dayPageId.length == 25){
+            document.getElementById('dayNumOutput').textContent = dayPageId[0];
+          }
+          else {
+            document.getElementById('dayNumOutput').textContent = dayPageId[0] + dayPageId[1];
+          
+          }
+          
         }
         document.onload = getDayNum()
       </script>
