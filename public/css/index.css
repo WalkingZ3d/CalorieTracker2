@@ -463,22 +463,24 @@ body {
 .daysListLinks {
     color: #000;
     font-size: 22px;    
+    margin-bottom: 0;
 }
 
-.daysListLinks:hover {
-    text-decoration: none;
-    color: var(--orange-color);    
-}
 
 .material-symbols-outlined.red600 {
-    color: #f00;
+    color: var(--orange-color);
     background-color: var(--body-color);
     border: none;
     padding-top: 0px;
     position: relative;
     bottom: 0;
+    text-decoration: none;
     min-height: 33px !important;
     margin-top: 1px !important;    
+}
+
+.material-symbols-outlined.red600:hover {
+    color: #000;    
 }
 
 .material-symbols-outlined.red601 {

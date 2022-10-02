@@ -94,7 +94,12 @@
             console.error(err);
           }
           try {
-            window.location.assign(`/entry/${dayPageId}`)
+            localStorage.setItem('flag', 0)
+            const myTimeout = setTimeout(delay, 400);
+
+            function delay() {
+              window.location.assign(`/entry/${dayPageId}`)
+            }           
             const res = await fetch('/calorie', {
                 method: 'POST',                
                 headers: { 'Content-Type': 'application/json'},

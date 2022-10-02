@@ -103,8 +103,8 @@
                       if(index >= start && index < end) return true;
                 }).forEach(function (value, i) {
                     result += `<tr id="tableRow">
-                    <td class="tdDelete"> <a id=${value.dayName.split(' ')[1]} class="daysListLinks" href="/entry/${value.dayId}">Day ${value.dayName.split(' ')[1]}</a></td>
-                    <td class="tdDelete"> <button class="material-symbols-outlined red600" onclick="deleteDay()">delete</button> </td>
+                    <td class="tdDelete"> <p id=${value.dayName.split(' ')[1]} class="daysListLinks" >Day ${value.dayName.split(' ')[1]}</p></td>
+                    <td class="tdDelete"><a href="/entry/${value.dayId}" class="material-symbols-outlined red600">edit_note</a> </td>
                     </tr>`;
                 });
                 table.innerHTML = result;                
@@ -155,10 +155,6 @@
         const goBack = () => {
             window.location.assign('/');
         }        
-
-        const deleteDay = () => {
-            console.log('you wanna delete huh?')
-        }
     </script>
 
 <%- include('partials/footer') -%> 

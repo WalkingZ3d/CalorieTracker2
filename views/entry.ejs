@@ -51,12 +51,30 @@
 
       
       <script>
-        const populate = () => {
-              console.log(window.location.href.split('/')[4])
-              sessionStorage.setItem('id', window.location.href.split('/')[4])
+        const populate = async () => {
+            console.log(window.location.href.split('/')[4])
+            sessionStorage.setItem('id', window.location.href.split('/')[4])   
+
+            const flag = localStorage.getItem('flag');
+            console.log('flag: ', flag)
+            if(flag == 0) {
+                console.log('flag < 1');
+                // 
+                localStorage.removeItem('flag');
+                localStorage.setItem('flag', 1)
+                const myTimeout = setTimeout(delay, 350);
+
+                function delay() {
+                    window.location.reload()
+                }
+                
+            }
+            console.log('flag again: ', flag)
         }
 
         document.onload = populate();
+        
+
 
         const goBack = () => {
             window.location.assign('/days')
@@ -72,7 +90,8 @@
                     body: JSON.stringify({userDayId: id.trim(), dayId: window.location.href.split('/')[4]})
                 });
                 const data = await res.json();
-                console.log('data after delete: ', data);               
+                console.log('data after delete: ', data);   
+                window.location.reload();            
             }
             catch (err){
                 console.error(err);
